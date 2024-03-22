@@ -5,7 +5,9 @@ const NewsBoard = ({category}) => {
 
   const[articles,setArticles]= useState([]);
   useEffect(() => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=24d596393c824f5db0ad4ede472579da`;
+    const apiKey = process.env.REACT_APP_API_KEY;
+    let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=${apiKey}`;
+    // let url = `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=24d596393c824f5db0ad4ede472579da`;
     fetch(url).then(response=> response.json()).then(data=> setArticles(data.articles));
   }, [category])
   
